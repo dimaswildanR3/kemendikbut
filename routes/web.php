@@ -1,4 +1,5 @@
 <?php
+// use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\AgendaController;
@@ -11,7 +12,7 @@ use App\Http\Controllers\KategoriDokumenController;
 use App\Http\Controllers\KategoriVideoController;
 use App\Http\Controllers\KategoriGambarController;
 use App\Http\Controllers\KontakController;
-use App\Http\Controllers\UsersController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\VideoController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\SosialMediaController;
@@ -32,7 +33,7 @@ use App\Http\Controllers\BidangController;
 */
 
 // Route untuk login dan logout
-Route::get('/', [LoginController::class, 'showLoginForm']);
+Route::get('/', [LoginController::class, 'showLoginForm'])->name('showLoginForm');
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
@@ -50,6 +51,13 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/agenda/{agenda}/edit', [AgendaController::class, 'edit'])->name('agenda.edit');
     Route::put('/agenda/{agenda}', [AgendaController::class, 'update'])->name('agenda.update');
     Route::delete('/agenda/{agenda}', [AgendaController::class, 'destroy'])->name('agenda.destroy');
+
+
+//     Route::get('/users', [UserController::class, 'index'])->name('users.index');
+// Route::post('/users', [UserController::class, 'store'])->name('users.store');
+// Route::get('/users/{id}', [UserController::class, 'show'])->name('users.show');
+// Route::put('/users/{id}', [UserController::class, 'update'])->name('users.update');
+// Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('users.destroy');
 
     // Rute untuk Berita
     Route::get('/berita', [BeritaController::class, 'index'])->name('berita.index');
@@ -131,14 +139,14 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/kontak/{kontak}', [KontakController::class, 'update'])->name('kontak.update');
     Route::delete('/kontak/{kontak}', [KontakController::class, 'destroy'])->name('kontak.destroy');
 
-    // Rute untuk Users
-    Route::get('/users', [UsersController::class, 'index'])->name('users.index');
-    Route::get('/users/create', [UsersController::class, 'create'])->name('users.create');
-    Route::post('/users', [UsersController::class, 'store'])->name('users.store');
-    Route::get('/users/{user}', [UsersController::class, 'show'])->name('users.show');
-    Route::get('/users/{user}/edit', [UsersController::class, 'edit'])->name('users.edit');
-    Route::put('/users/{user}', [UsersController::class, 'update'])->name('users.update');
-    Route::delete('/users/{user}', [UsersController::class, 'destroy'])->name('users.destroy');
+    // // Rute untuk Users
+    Route::get('/users', [UserController::class, 'index'])->name('users.index');
+    Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
+    Route::post('/users', [UserController::class, 'store'])->name('users.store');
+    Route::get('/users/{user}', [UserController::class, 'show'])->name('users.show');
+    Route::get('/users/{user}/edit', [UserController::class, 'edit'])->name('users.edit');
+    Route::put('/users/{user}', [UserController::class, 'update'])->name('users.update');
+    Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
 
     // Rute untuk Video
     Route::get('/video', [VideoController::class, 'index'])->name('video.index');

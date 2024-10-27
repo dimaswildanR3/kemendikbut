@@ -81,11 +81,15 @@
             <div class="dropdown-divider"></div>
           </li>
           <li>
-            <a class="dropdown-item" href="{{ route('logout') }}">
-              <i class="bx bx-power-off me-2"></i>
-              <span class="align-middle">Log Out</span>
-            </a>
-          </li>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: inline;">
+                @csrf
+                <a class="dropdown-item" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    <i class="bx bx-power-off me-2"></i>
+                    <span class="align-middle">Log Out</span>
+                </a>
+            </form>
+        </li>
+        
         </ul>
       </li>
       <!--/ User Dropdown -->

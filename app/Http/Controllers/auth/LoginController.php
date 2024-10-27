@@ -31,10 +31,12 @@ class LoginController extends Controller
         return back()->withErrors(['loginError' => 'Username atau Password salah!']);
     }
 
-    public function logout()
+    public function logout(Request $request)
     {
         // Logout user
         Auth::logout();
-        return redirect()->route('login');
+    
+    
+        return redirect()->route('showLoginForm')->with('status', 'You have been logged out successfully.');
     }
 }

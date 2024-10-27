@@ -14,7 +14,7 @@
   <ul class="menu-inner py-1">
     <!-- Dashboard -->
     <li class="menu-item">
-      <a href="{{ url('/') }}" class="menu-link">
+      <a href="{{ url('/dashboard') }}" class="menu-link">
         <i class="menu-icon tf-icons bx bx-home-circle"></i>
         <div>Dashboard</div>
       </a>
@@ -22,7 +22,7 @@
     
     <!-- Pengguna -->
     <li class="menu-item">
-      <a href="{{ url('/pengguna') }}" class="menu-link">
+      <a href="{{ url('/users') }}" class="menu-link">
         <i class="menu-icon tf-icons bx bx-user"></i>
         <div>Pengguna</div>
       </a>
@@ -138,7 +138,7 @@
       </ul>
     </li>
 
-    <!-- Informasi -->
+    {{-- <!-- Informasi -->
     <li class="menu-item">
       <a href="javascript:void(0);" class="menu-link menu-toggle">
         <i class="menu-icon tf-icons bx bx-info-circle"></i>
@@ -161,7 +161,7 @@
           </a>
         </li>
       </ul>
-    </li>
+    </li> --}}
 
  <!-- Pesan -->
 <li class="menu-item">
