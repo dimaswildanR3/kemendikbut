@@ -28,13 +28,14 @@ class AgendaController extends Controller
         $validated = $request->validate([
             'judul' => 'required|string|max:255',
             'tanggal' => 'required|date',
-            'waktu_mulai' => 'required',
-            'waktu_selesai' => 'required',
+            'waktu_mulai' => 'required|date_format:H:i',
+            'waktu_selesai' => 'required|date_format:H:i|after:waktu_mulai',
             'lokasi' => 'required|string|max:255',
             'kategori_id' => 'required|exists:kategori_agenda,id',
             'users_id' => 'required|exists:users,id',
         ]);
 
+        // Simpan data agenda
         Agenda::create($validated);
 
         return redirect()->route('agenda.index')->with('success', 'Agenda berhasil ditambahkan');
@@ -47,31 +48,34 @@ class AgendaController extends Controller
 
     public function edit(Agenda $agenda)
     {
-        
         $kategoriAgenda = KategoriAgenda::all();
-
-        
         return view('agenda.edit', compact('agenda', 'kategoriAgenda'));
     }
 
-    public function update(Request $request, Agenda $agenda)
+    public function update(Request $request, $id)
     {
-        $validated = $request->validate([
+        // Validasi input
+        $validatedData = $request->validate([
             'judul' => 'required|string|max:255',
             'tanggal' => 'required|date',
-            'waktu_mulai' => 'required',
-            'waktu_selesai' => 'required',
+            'waktu_mulai' => 'required|date_format:H:i',
+            'waktu_selesai' => 'required|date_format:H:i|after:waktu_mulai',
             'lokasi' => 'required|string|max:255',
             'kategori_id' => 'required|exists:kategori_agenda,id',
-            'users_id' => 'required|exists:users,id',
         ]);
-
-        // Update agenda dengan data yang sudah divalidasi
-        $agenda->update($validated);
-
-        return redirect()->route('agenda.index')->with('success', 'Agenda berhasil diperbarui');
+    
+        // Temukan agenda berdasarkan ID
+        $agenda = Agenda::findOrFail($id);
+    
+        // Update data
+        $agenda->update($validatedData);
+    
+        // Redirect atau kembali ke index
+        return redirect()->route('agenda.index')->with('success', 'Agenda berhasil diperbarui!');
     }
     
+    
+
     public function destroy(Agenda $agenda)
     {
         $agenda->delete();

@@ -10,8 +10,7 @@
                         <small class="text-muted float-end">Form Edit Agenda</small>
                     </div>
                     <div class="card-body">
-                        <!-- Form untuk edit agenda -->
-                        <form action="{{ route('agenda.update', $agenda->id) }}" method="POST">
+                        <form action="{{ route('agenda.updatebro', $agenda->id) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('PUT') <!-- Ini penting untuk method PUT -->
 
@@ -19,7 +18,7 @@
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label" for="judul">Judul</label>
                                 <div class="col-sm-10">
-                                    <input type="text" name="judul" class="form-control" value="{{ old('judul', $agenda->judul) }}">
+                                    <input type="text" name="judul" class="form-control" value="{{ old('judul', $agenda->judul) }}" required>
                                     @error('judul')
                                         <small class="text-danger">{{ $message }}</small>
                                     @enderror
@@ -30,7 +29,7 @@
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label" for="tanggal">Tanggal</label>
                                 <div class="col-sm-10">
-                                    <input type="date" name="tanggal" class="form-control" value="{{ old('tanggal', $agenda->tanggal->format('Y-m-d')) }}">
+                                    <input type="date" name="tanggal" class="form-control" value="{{ old('tanggal', $agenda->tanggal) }}" required>
                                     @error('tanggal')
                                         <small class="text-danger">{{ $message }}</small>
                                     @enderror
@@ -41,7 +40,7 @@
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label" for="waktu_mulai">Waktu Mulai</label>
                                 <div class="col-sm-10">
-                                    <input type="time" name="waktu_mulai" class="form-control" value="{{ old('waktu_mulai', $agenda->waktu_mulai) }}">
+                                    <input type="time" name="waktu_mulai" class="form-control" value="{{ old('waktu_mulai', $agenda->waktu_mulai) }}" required>
                                     @error('waktu_mulai')
                                         <small class="text-danger">{{ $message }}</small>
                                     @enderror
@@ -52,7 +51,7 @@
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label" for="waktu_selesai">Waktu Selesai</label>
                                 <div class="col-sm-10">
-                                    <input type="time" name="waktu_selesai" class="form-control" value="{{ old('waktu_selesai', $agenda->waktu_selesai) }}">
+                                    <input type="time" name="waktu_selesai" class="form-control" value="{{ old('waktu_selesai', $agenda->waktu_selesai) }}" required>
                                     @error('waktu_selesai')
                                         <small class="text-danger">{{ $message }}</small>
                                     @enderror
@@ -63,7 +62,7 @@
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label" for="lokasi">Lokasi</label>
                                 <div class="col-sm-10">
-                                    <input type="text" name="lokasi" class="form-control" value="{{ old('lokasi', $agenda->lokasi) }}">
+                                    <input type="text" name="lokasi" class="form-control" value="{{ old('lokasi', $agenda->lokasi) }}" required>
                                     @error('lokasi')
                                         <small class="text-danger">{{ $message }}</small>
                                     @enderror
@@ -74,15 +73,14 @@
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label" for="kategori_id">Kategori</label>
                                 <div class="col-sm-10">
-                                    <select name="kategori_id" class="form-select">
+                                    <select name="kategori_id" class="form-select" required>
                                         <option value="">-- Pilih Kategori --</option>
                                         @foreach ($kategoriAgenda as $kategori)
-                                            <option value="{{ $kategori->id }}" {{ (old('kategori_id', $agenda->kategori_id) == $kategori->id) ? 'selected' : '' }}>
+                                            <option value="{{ $kategori->id }}" {{ old('kategori_id', $agenda->kategori_id) == $kategori->id ? 'selected' : '' }}>
                                                 {{ $kategori->nama_kategori }}
                                             </option>
                                         @endforeach
                                     </select>
-
                                     @error('kategori_id')
                                         <small class="text-danger">{{ $message }}</small>
                                     @enderror

@@ -68,16 +68,17 @@
                             </div>
                         </div>
 
-                        <!-- Tanggal -->
-                        <div class="row mb-3">
-                            <label class="col-sm-2 col-form-label" for="tanggal">Tanggal</label>
-                            <div class="col-sm-10">
-                                <input type="date" name="tanggal" id="tanggal" class="form-control" value="{{ old('tanggal') }}" required>
-                                @error('tanggal')
-                                    <small class="text-danger">{{ $message }}</small>
-                                @enderror
-                            </div>
-                        </div>
+                    <!-- Tanggal -->
+<div class="row mb-3">
+    <label class="col-sm-2 col-form-label" for="tanggal">Tanggal</label>
+    <div class="col-sm-10">
+        <input type="datetime-local" name="tanggal" id="tanggal" class="form-control" value="{{ old('tanggal') }}" required>
+        @error('tanggal')
+            <small class="text-danger">{{ $message }}</small>
+        @enderror
+    </div>
+</div>
+
 
                         <!-- Tombol Submit -->
                         <div class="row justify-content-end">

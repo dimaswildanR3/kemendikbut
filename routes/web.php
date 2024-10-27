@@ -49,7 +49,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/agenda', [AgendaController::class, 'store'])->name('agenda.store');
     Route::get('/agenda/{agenda}', [AgendaController::class, 'show'])->name('agenda.show');
     Route::get('/agenda/{agenda}/edit', [AgendaController::class, 'edit'])->name('agenda.edit');
-    Route::put('/agenda/{agenda}', [AgendaController::class, 'update'])->name('agenda.update');
+    Route::put('/agenda/{agenda}/udate', [AgendaController::class, 'update'])->name('agenda.updatebro');
     Route::delete('/agenda/{agenda}', [AgendaController::class, 'destroy'])->name('agenda.destroy');
 
 
@@ -195,7 +195,7 @@ Route::post('/deskripsi-sistem', [DeskripsiSistemController::class, 'store'])->n
 Route::get('/deskripsi-sistem/{deskripsiSistem}', [DeskripsiSistemController::class, 'show'])->name('deskripsi_sistem.show');
 Route::get('/deskripsi-sistem/{deskripsiSistem}/edit', [DeskripsiSistemController::class, 'edit'])->name('deskripsi_sistem.edit');
 Route::put('/deskripsi-sistem/{deskripsiSistem}', [DeskripsiSistemController::class, 'update'])->name('deskripsi_sistem.update');
-Route::delete('/deskripsi-sistem/{deskripsiSistem}', [DeskripsiSistemController::class, 'destroy'])->name('deskripsi_sistem.destroy');
+Route::delete('/deskripsi-sistembro/{deskripsiSistem}', [DeskripsiSistemController::class, 'destroy'])->name('deskripsi_sistem.destroy');
 
 
 Route::get('/bidang', [BidangController::class, 'index'])->name('bidang.index');

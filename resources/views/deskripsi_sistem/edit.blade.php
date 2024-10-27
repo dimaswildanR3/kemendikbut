@@ -10,9 +10,9 @@
                     <small class="text-muted float-end">Form Edit Deskripsi Sistem</small>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('deskripsi_sistem.update', $deskripsi_sistem) }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('deskripsi_sistem.update', $deskripsi_sistem->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
-                        @method('PUT')
+                        @method('PUT')                    
 
                         <!-- Nama -->
                         <div class="row mb-3">

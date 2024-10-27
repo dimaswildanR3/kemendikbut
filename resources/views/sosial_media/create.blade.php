@@ -39,7 +39,7 @@
                         <div class="row mb-3">
                             <label class="col-sm-2 col-form-label" for="color">Warna</label>
                             <div class="col-sm-10">
-                                <input type="text" name="color" id="color" class="form-control" value="{{ old('color') }}" required>
+                                <input type="color" name="color" id="color" class="form-control" value="{{ old('color') ?: '#000000' }}" required>
                                 @error('color')
                                     <small class="text-danger">{{ $message }}</small>
                                 @enderror

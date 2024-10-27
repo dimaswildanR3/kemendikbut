@@ -40,7 +40,7 @@
                         <div class="row mb-3">
                             <label class="col-sm-2 col-form-label" for="color">Warna Sosial Media</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="color" name="color" placeholder="Masukkan warna (hex)" value="{{ old('color', $sosialMedia->color) }}" required />
+                                <input type="color" class="form-control" id="color" name="color" placeholder="Masukkan warna (hex)" value="{{ old('color', $sosialMedia->color) }}" required />
                                 @error('color')
                                     <small class="text-danger">{{ $message }}</small>
                                 @enderror
